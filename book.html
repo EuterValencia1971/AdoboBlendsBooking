@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+  <meta charset="UTF-8">
+  <title>Book Appointment</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-red-500 p-10 min-h-screen flex items-center justify-center">
+  <div class="w-full max-w-xl">
+    <h2 class="text-3xl font-bold mb-6 text-center">Book a Haircut</h2>
+
+    <p class="text-sm text-red-400 mb-4 text-center">
+      Available times: Weekdays from 3:30 PM – 9:00 PM, Weekends from 8:00 AM – 9:00 PM.
+    </p>
+
+    <form method="POST" class="bg-black border border-red-500 p-8 rounded-lg shadow-lg">
+
+      <input name="name" placeholder="Your Name"
+        class="bg-black border border-red-500 p-2 w-full mb-4 rounded text-red-500 placeholder-red-300" required>
+
+      <input name="email" placeholder="Your Email"
+        class="bg-black border border-red-500 p-2 w-full mb-4 rounded text-red-500 placeholder-red-300" required>
+
+      <select name="barber" class="bg-black border border-red-500 p-2 w-full mb-4 rounded text-red-500" required>
+        <option value="AdoboBlends">AdoboBlends</option>
+      </select>
+
+      <!--Drop down menu of the services-->
+      <select name="service" class="bg-black border border-red-500 p-2 w-full mb-4 rounded text-red-500" required>
+        <option value="">Select Service</option>
+        <option value="Haircut - $25">Haircut - $25</option>
+        <option value="Design - $5">Design - $5</option>
+        <option value="Haircut + Design - $30">Haircut + Design - $30</option>
+        <option value="Hair Dye + Haircut - $65">Hair Dye + Haircut - $65</option>
+      </select>
+
+      <!-- Calender view of the date -->
+      <div class="mb-4 relative">
+        <input
+          id="date-input"
+          name="date"
+          type="date"
+          value="{{ selected_date }}"
+          class="bg-black text-red-500 p-2 w-full rounded border border-red-500 pr-10"
+          required
+        >
+        <button type="button"
+                id="calendar-button"
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-400 hover:text-red-200 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               class="h-4 w-4"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke="currentColor">
+            <path stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10m-10 4h6m2 4H6a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Selecting the time  -->
+      <select name="time" class="bg-black border border-red-500 p-2 w-full mb-4 rounded text-red-500" required>
+        {% for time in available_times %}
+          <option value="{{ time }}">{{ time }}</option>
+        {% endfor %}
+        {% if not available_times %}
+          <option disabled>No times available for selected date</option>
+        {% endif %}
+      </select>
+
+      <!-- Confirmation of the bookings-->
+      <button class="bg-red-500 hover:bg-red-600 text-black font-semibold px-4 py-2 rounded w-full transition">
+        Book Now
+      </button>
+    </form>
+  </div>
+
+  <!-- The calender icon -->
+  <script>
+    document.getElementById('calendar-button').addEventListener('click', function () {
+      document.getElementById('date-input').showPicker?.() || document.getElementById('date-input').focus();
+    });
+  </script>
+</body>
+</html>

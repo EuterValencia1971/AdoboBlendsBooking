@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Time Slot Unavailable</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-red-500 flex flex-col items-center justify-center min-h-screen p-8">
+  <div class="text-center">
+    <h1 class="text-3xl font-bold mb-4">Time Slot Unavailable</h1>
+    <p class="mb-6">Sorry, the time slot for <span class="font-semibold">{{ barber }}</span> on <span class="font-semibold">{{ date }}</span> at <span class="font-semibold">{{ time }}</span> is already booked.</p>
+    <a href="/book" class="bg-red-500 hover:bg-red-600 text-black font-semibold px-4 py-2 rounded transition">Try Another Time</a>
+  </div>
+</body>
+</html>

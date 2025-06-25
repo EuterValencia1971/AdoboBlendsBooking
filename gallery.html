@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AdoboBlends - Gallery</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-white p-10 min-h-screen">
+  <h1 class="text-3xl text-red-500 font-bold mb-6">Previous Cuts</h1>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <img src="{{ url_for('static', filename='IMG_2187.jpeg') }}" alt="Cut 1" class="rounded-xl shadow-lg">
+    <img src="{{ url_for('static', filename='IMG_2186.jpeg') }}" alt="Cut 2" class="rounded-xl shadow-lg">
+    <img src="{{ url_for('static', filename='IMG_2189.jpeg') }}" alt="Cut 3" class="rounded-xl shadow-lg">
+  </div>
+
+  <div class="mt-8">
+    <a href="{{ url_for('index') }}" class="text-red-500 underline">← Back to Home</a>
+  </div>
+</body>
+</html>
